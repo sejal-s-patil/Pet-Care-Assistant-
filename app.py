@@ -5,10 +5,11 @@ st.title("PET CARE ASSISTANT")
 st.header("Choose your pet:")
 
 if st.button("🐶 Dog"):
-    st.write("You selected Dog!")
+    st.switch_page("pages/dog_breed.py")
     
 if st.button("🐱 Cat"):
-    st.write("You selected Cat!")
+    
+    st.switch_page("pages/cat_breed.py")
 
 if st.button("🐦 Bird"):
-    st.write("You selected Bird!")
+    st.switch_page("pages/bird.py")

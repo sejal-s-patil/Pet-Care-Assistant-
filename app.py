@@ -315,6 +315,7 @@ breed_info = {
 
 st.header("Choose your pet:")
 
+<<<<<<< HEAD
 if "selected_pet" not in st.session_state:
     st.session_state.selected_pet = None
 
@@ -409,3 +410,14 @@ if st.session_state.selected_pet:
 
             st.markdown("### ❤️ Care Tips")
             st.write(info["care"])
+=======
+if st.button("🐶 Dog"):
+    st.switch_page("pages/dog_breed.py")
+    
+if st.button("🐱 Cat"):
+    
+    st.switch_page("pages/cat_breed.py")
+
+if st.button("🐦 Bird"):
+    st.switch_page("pages/bird.py")
+>>>>>>> ad85af91cd7730819d33c4a112c88e850e42feff

@@ -1,5 +1,7 @@
+from groq import Groq
 import streamlit as st
 
+client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 st.set_page_config(
     page_title="Pet Care Assistant",
     page_icon="🐾",
@@ -23,7 +25,7 @@ pet_breeds = {
         "Beagle",
         "Rottweiler",
         "Pomeranian",
-        "Shih Tzu"
+        "Shih Tzu",
         "Husky",
         "Bulldog",
         "Dachshund"
@@ -100,7 +102,7 @@ pet_breeds = {
         "Goldfish",
         "Betta Fish",
         "Guppy",
-        "Molly",
+        "Molly fish",
         "Angelfish",
         "Tetra Fish",
         "Corydoras Catfish",
@@ -984,25 +986,37 @@ if st.session_state.selected_pet:
 
         st.divider()
 
-        st.subheader(f"🐾 About {selected_breed}")
+st.header("🤖 AI Pet Care Assistant")
 
-        st.write(info["about"])
+question = st.text_input("Ask anything about your pet:")
 
-        col1, col2 = st.columns(2)
+if st.button("🤖 Ask AI"):
+    if question.strip():
+        prompt = f"""
+You are a helpful pet-care assistant.
+Give simple, safe, general information.
+Do not diagnose serious medical conditions.
+If the pet may be seriously ill or injured, recommend contacting a veterinarian.
 
-        with col1:
-            st.markdown("### 👀 Appearance")
-            st.write(info["appearance"])
+Pet: {st.session_state.selected_pet}
+Question: {question}
+"""
 
-            st.markdown("### 🧠 Behavior")
-            st.write(info["behavior"])
+        try:
+            response = client.chat.completions.create(
+                model="openai/gpt-oss-20b",
+                messages=[
+                    {"role": "user", "content": prompt}
+                ]
+            )
 
-            st.markdown("### ⏳ Lifespan")
-            st.write(info["lifespan"])
+            st.write(response.choices[0].message.content)
 
-        with col2:
-            st.markdown("### 🍽️ Diet")
-            st.write(info["diet"])
+        except Exception as e:
+            if "429" in str(e):
+                st.warning("⏳ AI service limit reached. Please try again shortly.")
+            else:
+                st.error(f"Something went wrong: {e}")
 
-            st.markdown("### ❤️ Care Tips")
-            st.write(info["care"])
+    else:
+        st.warning("Please enter a question first.")

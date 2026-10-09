@@ -133,8 +133,9 @@ pet_breeds = {
 # --------------------------------------------------
 
 breed_info = {
-
+ # -------------------------------------------------
  # DOG BREED
+ # -------------------------------------------------
     
     "Labrador Retriever": {
         "about": "A friendly, intelligent and energetic dog breed that is popular as a family pet.",
@@ -235,8 +236,9 @@ breed_info = {
         "care": "Regular exercise, back care and gentle handling."
     },
 
- 
- #CAT BREED
+ # ------------------------------------------------
+ # CAT BREED
+ #-------------------------------------------------
 
     "Persian": {
         "about": "A long-haired cat known for its calm personality and distinctive appearance.",
@@ -337,8 +339,9 @@ breed_info = {
         "care": "Regular ear cleaning, grooming and veterinary checkups."
     },
 
-
- #BIRD BREED
+ # -----------------------------------------------------------
+ # BIRD BREED
+ # -----------------------------------------------------------
 
     "Parrot": {
         "about": "Intelligent and colorful bird breed known for mimicking sounds and speech.",
@@ -430,7 +433,10 @@ breed_info = {
         "care": "Large cage, toys, social interaction and daily care."
     },
 
- #RABBIT BREED
+ # -----------------------------------------------------
+ # RABBIT BREED
+ # -----------------------------------------------------
+
     "Holland Lop": {
         "about": "A small rabbit breed recognized by its floppy ears.",
         "appearance": "Small, compact body with characteristic lop ears.",
@@ -530,7 +536,9 @@ breed_info = {
         "care": "Regular grooming, playtime and routine veterinary care."
     },
 
-    #HAMSTER BREED
+  # -------------------------------------------------
+  # HAMSTER BREED
+  # -------------------------------------------------
 
     "Syrian Hamster": {
         "about": "A small pet hamster that is generally kept alone.",
@@ -621,8 +629,10 @@ breed_info = {
         "diet": "Quality hamster food, vegetables and occasional treats.",
         "care": "Large cage with bedding, wheel, toys and regular grooming."
     },
-
-    #TURTLE BREED
+    
+  # -------------------------------------------------------
+  # TURTLE BREED
+  # -------------------------------------------------------
 
     "Red-Eared Slider": {
         "about": "A popular freshwater turtle breed known for its red ear markings and aquatic nature.",
@@ -713,8 +723,9 @@ breed_info = {
         "diet": "Small fish, aquatic insects, plants and vegetables.",
         "care": "Large aquarium with land area, basking spot, UVB light and proper conditions."
     },
-
-    # FISH BREED
+  # ---------------------------------------------------------
+  # FISH BREED
+  # ---------------------------------------------------------
 
     "Goldfish": {
         "about": "A popular freshwater fish commonly kept as a pet.",
@@ -815,7 +826,9 @@ breed_info = {
         "care": "Planted aquarium, moderate temperature and regular water changes."
     },
 
-    #REPTILE BREED
+  # ----------------------------------------------------------
+  # REPTILE BREED
+  # ----------------------------------------------------------
 
     "Leopard Gecko": {
         "about": "A small terrestrial lizard commonly kept as a companion reptile.",

@@ -1,3 +1,4 @@
+from doctors_data import doctors
 from groq import Groq
 import streamlit as st
 
@@ -1020,3 +1021,59 @@ Question: {question}
 
     else:
         st.warning("Please enter a question first.")
+        
+# 🩺 Find Your Veterinarian
+st.title("🐾 Find a Veterinarian")
+st.caption("Meet our demo veterinary profiles ❤️")
+
+city = st.selectbox(
+    "📍 Choose City",
+    ["All Cities", "Nandurbar", "Nashik", "Dhule","Shirpur"]
+)
+
+pet_type = st.selectbox(
+    "🐶 Choose Pet Type",
+    ["All Pets", "Dog", "Cat", "Bird", "Rabbit", "Hamster", "Turtle"]
+)
+
+filtered_doctors = []
+for doctor in doctors:
+    city_name = doctor["city"].replace(" 📍", "")
+
+    city_match = city == "All Cities" or city_name == city
+    pet_match = (
+        pet_type == "All Pets"
+        or pet_type in doctor["pet_types"]
+    )
+
+    if city_match and pet_match:
+        filtered_doctors.append(doctor)
+
+if filtered_doctors:
+    for doctor in filtered_doctors:
+        with st.container(border=True):
+            st.subheader(f"{doctor['emoji']} {doctor['name']}")
+            st.success(doctor["badge"])
+
+            st.write("📍 **City:**", doctor["city"])
+            st.write(
+                "🩺 **Specialization:**",
+                ", ".join(doctor["specialization"])
+            )
+            st.write("🎓 **Experience:**", f"{doctor['experience']} years")
+            st.write("⭐ **Rating:**", f"{doctor['rating']}/5")
+            st.write("💬 **Reviews:**", doctor["total_reviews"])
+            st.write("💰 **Demo consultation fee:** ₹", doctor["consultation_fee"])
+            st.write("🟢 **Availability:**", doctor["availability"])
+            st.write("ℹ️", doctor["about"])
+
+            with st.expander("💖 Read Reviews"):
+                for review in doctor["reviews"]:
+                    st.write(
+                        f"⭐ {review['rating']}/5 — "
+                        f"**{review['user']}**"
+                    )
+                    st.write(f"💬 {review['comment']}")
+                    st.divider()
+else:
+    st.info("🐾 No demo doctors found for this selection.")
